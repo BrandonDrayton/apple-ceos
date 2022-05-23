@@ -1,7 +1,8 @@
 const http = require('http');
 const express = require('express')
 const es6Renderer = require('express-es6-template-engine')
-const { ceos } = require('./data')
+const { ceos } = require('./data');
+const res = require('express/lib/response');
 
 const hostname = "localhost"
 const port = 3000
@@ -29,6 +30,10 @@ app.get('/', (req, res) => {
     })
 })
 
+// app.get('/ceos', function (req, res) {
+//     res.send('year: ' + req.query.year);
+// })
+
 app.get('/ceos', (req, res) => {
     res.render("ceo-list", {
         partials,
@@ -38,6 +43,19 @@ app.get('/ceos', (req, res) => {
         }
     })
 })
+// app.get('/ceos', (req, res) => {
+//     const search = req.query
+//     console.log(search)
+//     const year = req.query.year
+//     let filteredCeos = ceos
+//     if (search) {
+//         filteredCeos = filteredCeos.filter((ceo) => ceo.name.toLowerCase().includes(search.toLowerCase()))
+//     }
+//     if (year) {
+//         filteredCeos = filteredCeos.filter((ceo) => ceo.year.toLowerCase().includes(year.toLowerCase()))
+//     }
+//     return (res.json(filteredCeos))
+// })
 
 app.get("/ceos/:name", (req, res) => {
     const ceo = ceos.find(c => c.name === req.params.name)
@@ -70,17 +88,7 @@ app.get("/ceos/:slug", (req, res) => {
     })
 })
 
-app.get('/ceos/', (req, res) => {
-    const search = req.query.search
-    console.log(search)
-    if (!search) return res.json(data.ceos)
-    else {
-        const filteredCeos = data.ceos.filter((ceo) => ceo.name.toLowerCase().includes(search.toLowerCase()))
-        return (res.json(filteredCeos))
-    }
 
-
-})
 
 
 
