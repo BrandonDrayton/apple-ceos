@@ -5,6 +5,7 @@ const ceos = [
         name: 'Steve Jobs',
         year: '1976',
         details: "Steven Paul Jobs was an American inventor, designer and entrepreneur who was the co-founder, chief executive and chairman of Apple Computer. Apple's revolutionary products, which include the iPod, iPhone and iPad, are now seen as dictating the evolution of modern technology. ",
+
     },
     {
         id: 2,
@@ -32,6 +33,7 @@ const ceos = [
         slug: 'michael_spindler',
         name: 'Michael Spindler',
         year: '1993',
+        details: "He was a good guy"
     },
     {
         id: 6,
